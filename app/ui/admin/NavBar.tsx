@@ -4,32 +4,32 @@ import Link from "next/link";
 export default function NavBar() {
   return (
     <div className="bg-primary">
-      <nav className="container mx-auto flex justify-between items-center">
+      <nav className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/">
           <Image src="/logo.png" alt="Logo" width={100} height={100} />
         </Link>
         <div className="text-white grow flex justify-evenly">
           <Link
             href="/"
-            className="hover:underline decoration-white underline-offset-4"
+            className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Home
           </Link>
           <Link
             href="/destination"
-            className="hover:underline decoration-white underline-offset-4"
+            className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Destinations
           </Link>
           <Link
             href="/reservation"
-            className="hover:underline decoration-white underline-offset-4"
+            className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Reservations
           </Link>
           <Link
             href="/itinerary"
-            className="hover:underline decoration-white underline-offset-4"
+            className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Itineraries
           </Link>
