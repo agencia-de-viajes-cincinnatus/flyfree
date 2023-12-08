@@ -1,6 +1,6 @@
 export default function CreateReservationForm() {
   return (
-    <div className="rounded-xl bg-[#EDEDED] py-8 px-10">
+    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 mb-6">
       <h2 className="text-2xl font-bold text-[#242424] mb-2">
         Create reservation
       </h2>
@@ -38,7 +38,7 @@ export default function CreateReservationForm() {
         </div>
 
         <div className="flex justify-end mt-6 space-x-4">
-          <button type="submit" className="bg-red-600 px-8 py-2 text-white font-bold rounded-xl text-lg">Cancel</button>
+          <button type="reset" className="bg-red-600 px-8 py-2 text-white font-bold rounded-xl text-lg">Cancel</button>
           <button type="submit" className="bg-tertiary px-8 py-2 text-white font-bold rounded-xl text-lg">Create</button>
         </div>
       </form>
