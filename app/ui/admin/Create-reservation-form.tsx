@@ -1,6 +1,6 @@
 export default function CreateReservationForm() {
   return (
-    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 mb-6">
+    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 mb-6  shadow-lg">
       <h2 className="text-2xl font-bold text-[#242424] mb-2">
         Create reservation
       </h2>

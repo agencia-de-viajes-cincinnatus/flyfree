@@ -6,7 +6,7 @@ export default function NavBar() {
     <div className="bg-primary">
       <nav className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/">
-          <Image src="/logo.png" alt="Logo" width={100} height={100} />
+          <Image src="/logo.png" alt="Logo" width={100} height={100} priority/>
         </Link>
         <div className="text-white grow flex justify-evenly">
           <Link
@@ -16,19 +16,25 @@ export default function NavBar() {
             Home
           </Link>
           <Link
-            href="/destination"
+            href="/admin"
+            className="hover:text-tertiary font-bold text-lg ease-in duration-100"
+          >
+            Manage
+          </Link>
+          <Link
+            href="/admin/destinations"
             className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Destinations
           </Link>
           <Link
-            href="/reservation"
+            href="/admin/reservations"
             className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Reservations
           </Link>
           <Link
-            href="/itinerary"
+            href="/admin/itineraries"
             className="hover:text-tertiary font-bold text-lg ease-in duration-100"
           >
             Itineraries
