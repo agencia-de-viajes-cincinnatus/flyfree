@@ -1,16 +1,25 @@
 "use client";
 
-import { createDestination } from "@/app/lib/actions";
+import { editDestination } from "@/app/lib/actions";
+import { Destination } from "@/app/lib/definitions";
+import { useRouter } from "next/navigation";
 import { useFormState } from "react-dom";
 
-export default function CreateDestinationForm() {
+export default function EditDestinationForm({
+  destination,
+}: {
+  destination: Destination;
+}) {
+    const router = useRouter();
+  const updateDestinationWithId = editDestination.bind(null, destination.id);
   const initialState = { message: '', errors: {} };
-  const [state, dispatch] = useFormState(createDestination, initialState);
+  const [state, dispatch] = useFormState(updateDestinationWithId, initialState);
+
 
   return (
-    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 mb-6 shadow-lg">
+    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 my-6 shadow-lg">
       <h2 className="text-2xl font-bold text-[#242424] mb-2">
-        Create destination
+        Edit destination
       </h2>
 
       <form action={dispatch}>
@@ -23,6 +32,7 @@ export default function CreateDestinationForm() {
               type="text"
               name="country"
               id="country"
+              defaultValue={destination.country}
               className="p-3 w-full bg-[#D9D9D9] mt-2"
               aria-describedby="country-error"
             />
@@ -44,6 +54,7 @@ export default function CreateDestinationForm() {
               type="text"
               name="city"
               id="city"
+              defaultValue={destination.city}
               className="p-3 w-full bg-[#D9D9D9] mt-2"
               aria-describedby="city-error"
             />
@@ -65,6 +76,7 @@ export default function CreateDestinationForm() {
               type="number"
               name="price"
               id="price"
+              defaultValue={destination.price}
               className="p-3 w-full bg-[#D9D9D9] mt-2"
               aria-describedby="price-error"
             />
@@ -87,6 +99,7 @@ export default function CreateDestinationForm() {
               id="description"
               className="p-3 w-full bg-[#D9D9D9] mt-2"
               aria-describedby="description-error"
+              defaultValue={destination.description}
             ></textarea>
             <div id="description-error" aria-live="polite" aria-atomic="true">
               {state.errors?.description &&
@@ -107,6 +120,7 @@ export default function CreateDestinationForm() {
               name="score"
               id="score"
               className="p-3 w-full bg-[#D9D9D9] mt-2"
+              defaultValue={destination.score}
               aria-describedby="score-error"
             />
             <div id="score-error" aria-live="polite" aria-atomic="true">
@@ -130,8 +144,9 @@ export default function CreateDestinationForm() {
 
         <div className="flex justify-end mt-6 space-x-4">
           <button
-            type="reset"
+            type="button"
             className="bg-red-600 px-8 py-2 text-white font-bold rounded-xl text-lg"
+            onClick={() =>  router.push('/admin/destinations')}
           >
             Cancel
           </button>

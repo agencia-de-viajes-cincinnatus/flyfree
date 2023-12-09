@@ -1,7 +1,7 @@
 import { fetchDestinations } from "@/app/lib/data";
 import DestinationCard from "@/app/ui/admin/destination/DestinationCard";
 
-export default async function Destinations() {
+export default async function Page() {
   const destinations = await fetchDestinations();
 
   return (
