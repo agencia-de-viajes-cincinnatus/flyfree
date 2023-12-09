@@ -1,10 +1,10 @@
 "use client";
 
-import { createDestination } from "@/app/lib/actions";
+import { createDestination } from "@/app/lib/destinationActions";
 import { useFormState } from "react-dom";
 
 export default function CreateDestinationForm() {
-  const initialState = { message: '', errors: {} };
+  const initialState = { message: "", errors: {} };
   const [state, dispatch] = useFormState(createDestination, initialState);
 
   return (

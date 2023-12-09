@@ -71,7 +71,7 @@ export async function createDestination(
       headers: {
         "Content-type": "application/json",
       },
-      cache: 'no-store'
+      cache: "no-store",
     });
   } catch (error) {
     return {
@@ -111,7 +111,7 @@ export async function editDestination(
       headers: {
         "Content-type": "application/json",
       },
-      cache: 'no-store'
+      cache: "no-store",
     });
   } catch (error) {
     return {
@@ -121,4 +121,17 @@ export async function editDestination(
 
   revalidatePath("/admin/destinations");
   redirect("/admin/destinations");
+}
+
+export async function deleteDestination(id: string) {
+  try {
+    await fetch(`${baseUrl}/destination/${id}`, {
+      method: "DELETE",
+    });
+    revalidatePath("/admin/destinations");
+  } catch (error) {
+    return {
+      message: "Database Error: Failed to Delete Invoice.",
+    };
+  }
 }

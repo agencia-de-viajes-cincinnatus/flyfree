@@ -1,6 +1,6 @@
 "use client";
 
-import { editDestination } from "@/app/lib/actions";
+import { editDestination } from "@/app/lib/destinationActions";
 import { Destination } from "@/app/lib/definitions";
 import { useRouter } from "next/navigation";
 import { useFormState } from "react-dom";
@@ -10,11 +10,10 @@ export default function EditDestinationForm({
 }: {
   destination: Destination;
 }) {
-    const router = useRouter();
+  const router = useRouter();
   const updateDestinationWithId = editDestination.bind(null, destination.id);
-  const initialState = { message: '', errors: {} };
+  const initialState = { message: "", errors: {} };
   const [state, dispatch] = useFormState(updateDestinationWithId, initialState);
-
 
   return (
     <div className="rounded-xl bg-[#EDEDED] py-8 px-10 my-6 shadow-lg">
@@ -146,7 +145,7 @@ export default function EditDestinationForm({
           <button
             type="button"
             className="bg-red-600 px-8 py-2 text-white font-bold rounded-xl text-lg"
-            onClick={() =>  router.push('/admin/destinations')}
+            onClick={() => router.push("/admin/destinations")}
           >
             Cancel
           </button>
