@@ -1,21 +1,26 @@
 "use client";
 
-import { Destination } from "@/app/lib/definitions";
-import { createReservation } from "@/app/lib/reservationActions";
+import { Destination, Reservation } from "@/app/lib/definitions";
+import { useRouter } from "next/navigation";
 import { useFormState } from "react-dom";
+import { editReservation } from "@/app/lib/reservationActions";
 
-export default function CreateReservationForm({
+export default function EditReservationForm({
+  reservation,
   destinations,
 }: {
+  reservation: Reservation;
   destinations: Destination[];
 }) {
+  const router = useRouter();
+  const updateReservationWithId = editReservation.bind(null, reservation.id);
   const initialState = { message: "", errors: {} };
-  const [state, dispatch] = useFormState(createReservation, initialState);
+  const [state, dispatch] = useFormState(updateReservationWithId, initialState);
 
   return (
-    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 mb-6  shadow-lg">
+    <div className="rounded-xl bg-[#EDEDED] py-8 px-10 my-6 shadow-lg">
       <h2 className="text-2xl font-bold text-[#242424] mb-2">
-        Create reservation
+        Edit reservation
       </h2>
 
       <form action={dispatch}>
@@ -28,11 +33,11 @@ export default function CreateReservationForm({
               name="destination"
               id="destination"
               className="p-4 w-full bg-[#D9D9D9] mt-2"
-              defaultValue=""
+              defaultValue={reservation.destination.id}
               aria-describedby="destination-error"
             >
               <option value="" disabled>
-                Select a destination
+                {reservation.destination.city}
               </option>
               {destinations?.map((destination) => (
                 <option key={destination.id} value={destination.id}>
@@ -60,8 +65,9 @@ export default function CreateReservationForm({
               id="date"
               className="p-3 w-full bg-[#D9D9D9] mt-2"
               aria-describedby="date-error"
+              defaultValue={new Date(reservation.date).toISOString().substring(0,10)}
             />
-          <div id="date-error" aria-live="polite" aria-atomic="true">
+            <div id="date-error" aria-live="polite" aria-atomic="true">
               {state.errors?.date &&
                 state.errors?.date.map((error: string) => (
                   <p className="mt-2 text-base text-red-500" key={error}>
@@ -82,8 +88,9 @@ export default function CreateReservationForm({
 
         <div className="flex justify-end mt-6 space-x-4">
           <button
-            type="reset"
+            type="button"
             className="bg-red-600 px-8 py-2 text-white font-bold rounded-xl text-lg"
+            onClick={() => router.push("/admin/reservations")}
           >
             Cancel
           </button>

@@ -1,5 +1,5 @@
 import { Destination } from "@/app/lib/definitions";
-import { DeleteInvoice, UpdateDestination } from "./buttons";
+import { DeleteDestination, UpdateDestination } from "./buttons";
 
 export default function DestinationCard({
   destination,
@@ -19,7 +19,7 @@ export default function DestinationCard({
       </div>
       <div className="flex gap-2 mt-3">
         <UpdateDestination id={id} />
-        <DeleteInvoice id={id} />
+        <DeleteDestination id={id} />
       </div>
     </div>
   );

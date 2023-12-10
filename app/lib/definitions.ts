@@ -6,3 +6,11 @@ export type Destination = {
     description: string;
     score: number;
 }
+
+export type Reservation = {
+    id: string;
+    date: Date;
+    completed: boolean;
+    employee: string;
+    destination: Destination;
+}

@@ -1,4 +1,4 @@
-import { Destination } from "./definitions";
+import { Destination, Reservation } from "./definitions";
 import { unstable_noStore as noStore } from "next/cache";
 
 const baseUrl = "http://localhost:3000/api";
@@ -22,5 +22,27 @@ export async function fetchDestinationById(id: string): Promise<Destination> {
     return json;
   } catch (error) {
     throw new Error("Failed to fetch destination");
+  }
+}
+
+export async function fetchReservation(): Promise<Reservation[]> {
+  noStore();
+  try {
+    const res = await fetch(`${baseUrl}/reservation`);
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error("Failed to fetch reservation");
+  }
+}
+
+export async function fetchReservationById(id: string): Promise<Reservation> {
+  noStore();
+  try {
+    const res = await fetch(`${baseUrl}/reservation/${id}`);
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error("Failed to fetch reservation");
   }
 }

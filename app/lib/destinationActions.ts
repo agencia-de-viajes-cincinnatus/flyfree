@@ -131,7 +131,7 @@ export async function deleteDestination(id: string) {
     revalidatePath("/admin/destinations");
   } catch (error) {
     return {
-      message: "Database Error: Failed to Delete Invoice.",
+      message: "Database Error: Failed to Delete Destination.",
     };
   }
 }
