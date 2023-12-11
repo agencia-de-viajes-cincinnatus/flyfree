@@ -65,11 +65,35 @@ export default function EditReservationForm({
               id="date"
               className="p-3 w-full bg-[#D9D9D9] mt-2"
               aria-describedby="date-error"
-              defaultValue={new Date(reservation.date).toISOString().substring(0,10)}
+              defaultValue={new Date(reservation.date)
+                .toISOString()
+                .substring(0, 10)}
             />
             <div id="date-error" aria-live="polite" aria-atomic="true">
               {state.errors?.date &&
                 state.errors?.date.map((error: string) => (
+                  <p className="mt-2 text-base text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
+          </div>
+
+          <div className="w-2/6">
+            <div className="font-bold text-[#696969] text-xl">
+              <label htmlFor="passengers">Passengers</label>
+            </div>
+            <input
+              type="number"
+              name="passengers"
+              id="passengers"
+              defaultValue={reservation.passengers}
+              className="p-4 w-full bg-[#D9D9D9] mt-2"
+              aria-describedby="passengers-error"
+            />
+            <div id="passengers-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.passengers &&
+                state.errors?.passengers.map((error: string) => (
                   <p className="mt-2 text-base text-red-500" key={error}>
                     {error}
                   </p>

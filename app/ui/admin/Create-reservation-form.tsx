@@ -20,7 +20,7 @@ export default function CreateReservationForm({
 
       <form action={dispatch}>
         <div className="flex space-x-4">
-          <div className="w-2/4">
+          <div className="w-2/6">
             <div className="font-bold text-[#696969] text-xl">
               <label htmlFor="destination">Destination</label>
             </div>
@@ -50,7 +50,7 @@ export default function CreateReservationForm({
             </div>
           </div>
 
-          <div className="w-2/4">
+          <div className="w-2/6">
             <div className="font-bold text-[#696969] text-xl">
               <label htmlFor="date">Date</label>
             </div>
@@ -64,6 +64,27 @@ export default function CreateReservationForm({
           <div id="date-error" aria-live="polite" aria-atomic="true">
               {state.errors?.date &&
                 state.errors?.date.map((error: string) => (
+                  <p className="mt-2 text-base text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
+          </div>
+
+          <div className="w-2/6">
+            <div className="font-bold text-[#696969] text-xl">
+              <label htmlFor="passengers">Passengers</label>
+            </div>
+            <input
+              type="number"
+              name="passengers"
+              id="passengers"
+              className="p-4 w-full bg-[#D9D9D9] mt-2"
+              aria-describedby="passengers-error"
+            />
+          <div id="passengers-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.passengers &&
+                state.errors?.passengers.map((error: string) => (
                   <p className="mt-2 text-base text-red-500" key={error}>
                     {error}
                   </p>

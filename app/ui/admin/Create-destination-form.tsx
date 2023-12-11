@@ -59,7 +59,7 @@ export default function CreateDestinationForm() {
 
           <div>
             <div className="font-bold text-[#696969] text-xl">
-              <label htmlFor="date">Price</label>
+              <label htmlFor="date">Price per person</label>
             </div>
             <input
               type="number"

@@ -11,6 +11,7 @@ export type ReservationState = {
     date?: string[];
     completed?: string[];
     employee?: string[];
+    passengers?: string[];
   };
   message?: string | null;
 };
@@ -25,6 +26,9 @@ const ReservationFormSchema = z.object({
   destination: z.string({
     invalid_type_error: "Please enter a destination",
   }),
+  passengers: z.coerce
+    .number()
+    .gt(0, { message: "Please enter an amount greater than 0." }),
 });
 
 const CreateReservation = ReservationFormSchema.omit({ id: true });
@@ -36,6 +40,7 @@ export async function createReservation(
   const validatedFields = CreateReservation.safeParse({
     date: formData.get("date"),
     destination: formData.get("destination"),
+    passengers: formData.get("passengers"),
   });
 
   if (!validatedFields.success) {
@@ -46,9 +51,10 @@ export async function createReservation(
   }
 
   try {
-    await fetch(`${baseUrl}/reservation/${validatedFields.data.destination}`, {
+    const res = await fetch(`${baseUrl}/reservation/${validatedFields.data.destination}`, {
       method: "POST",
       body: JSON.stringify({
+        passengers: validatedFields.data.passengers,
         date: validatedFields.data.date,
         employee: "currentEmployee",
         completed: false,
@@ -58,6 +64,10 @@ export async function createReservation(
       },
       cache: "no-store",
     });
+
+    const result = await res.json();
+    console.log(result);
+    
   } catch (error) {
     return {
       message: "Database Error: Failed to Create Reservation.",
@@ -77,6 +87,7 @@ export async function editReservation(
   const validatedFields = UpdateReservation.safeParse({
     date: formData.get("date"),
     destination: formData.get("destination"),
+    passengers: formData.get("passengers"),
   });
 
   if (!validatedFields.success) {
@@ -86,8 +97,6 @@ export async function editReservation(
     };
   }
 
-  
-  
   try {
     await fetch(`${baseUrl}/reservation/${id}`, {
       method: "PATCH",

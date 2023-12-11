@@ -6,7 +6,7 @@ export default function ReservationCard({
 }: {
   reservation: Reservation;
 }) {
-  const { id, date, completed, employee, destination } = reservation;
+  const { id, date, completed, employee, destination, passengers } = reservation;
 
   return (
     <div className="rounded-xl bg-[#EDEDED] py-8 px-10 mb-6 shadow-md">
@@ -14,7 +14,8 @@ export default function ReservationCard({
         <h3 className="text-xl font-bold">{destination.city}</h3>
         <p className="text-lg text-neutral-500">{destination.country}</p>
         <p>{destination.description}</p>
-        <p className="text-yellow-600">$ {destination.price}</p>
+        <p>Passengers: {passengers}</p>
+        <p className="text-yellow-600">$ {destination.price * passengers}</p>
         <p>Date: {new Date(date).toISOString().split("T")[0]}</p>
       </div>
       <div className="flex gap-2 mt-3">
