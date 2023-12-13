@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { Destination } from "./definitions";
 
 const baseUrl = "http://localhost:3000/api";
 
@@ -65,7 +66,7 @@ export async function createDestination(
   }
 
   try {
-    await fetch(`${baseUrl}/destination`, {
+    const res = await fetch(`${baseUrl}/destination`, {
       method: "POST",
       body: JSON.stringify(validatedFields.data),
       headers: {
@@ -73,6 +74,21 @@ export async function createDestination(
       },
       cache: "no-store",
     });
+
+    const result: Destination = await res.json();
+
+    if (formData.get("file")) {
+      const imageData = new FormData();
+      const data = formData.get("file");
+
+      imageData.append("file", data as FormDataEntryValue);
+
+      await fetch(`${baseUrl}/destination/upload/${result.id}`, {
+        method: "POST",
+        body: imageData,
+        cache: "no-store",
+      });
+    }
   } catch (error) {
     return {
       message: "Database Error: Failed to Create Destination.",
@@ -113,12 +129,22 @@ export async function editDestination(
       },
       cache: "no-store",
     });
+
+    const imageData = new FormData();
+    const data = formData.get("file");
+
+    imageData.append("file", data as FormDataEntryValue);
+
+    await fetch(`${baseUrl}/destination/upload/${id}`, {
+      method: "POST",
+      body: imageData,
+      cache: "no-store",
+    });
   } catch (error) {
     return {
       message: "Database Error: Failed to Update Destination.",
     };
   }
-
   revalidatePath("/admin/destinations");
   redirect("/admin/destinations");
 }
