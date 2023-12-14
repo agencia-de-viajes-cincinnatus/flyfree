@@ -131,6 +131,19 @@ export default function EditDestinationForm({
                 ))}
             </div>
           </div>
+
+          <div>
+            <div className="font-bold text-[#696969] text-xl">
+              <label htmlFor="date">Image</label>
+            </div>
+            <input
+              type="file"
+              name="file"
+              id="image"
+              className="p-3 w-full bg-[#D9D9D9] mt-2"
+              accept="image/*"
+            />
+          </div>
         </div>
 
         <div aria-live="polite" aria-atomic="true">

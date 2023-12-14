@@ -5,6 +5,7 @@ export type Destination = {
   price: number;
   description: string;
   score: number;
+  image?: string;
 };
 
 export type Reservation = {
