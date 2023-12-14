@@ -144,6 +144,7 @@ export default function EditDestinationForm({
               accept="image/*"
             />
           </div>
+
         </div>
 
         <div aria-live="polite" aria-atomic="true">

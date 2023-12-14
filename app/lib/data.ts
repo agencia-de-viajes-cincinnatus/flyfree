@@ -25,6 +25,7 @@ export async function fetchDestinationById(id: string): Promise<Destination> {
   }
 }
 
+
 // export async function fetchDestinationImage(imageName: string) {
 //   noStore();
 //   try {
@@ -59,3 +60,4 @@ export async function fetchReservationById(id: string): Promise<Reservation> {
     throw new Error("Failed to fetch reservation");
   }
 }
+

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { Destination } from "./definitions";
 
+
 const baseUrl = "http://localhost:3000/api";
 
 export type DestinationState = {
@@ -66,7 +67,10 @@ export async function createDestination(
   }
 
   try {
+
     const res = await fetch(`${baseUrl}/destination`, {
+    await fetch(`${baseUrl}/destination`, {
+
       method: "POST",
       body: JSON.stringify(validatedFields.data),
       headers: {
@@ -74,6 +78,7 @@ export async function createDestination(
       },
       cache: "no-store",
     });
+
 
     const result: Destination = await res.json();
 
@@ -145,6 +150,7 @@ export async function editDestination(
       message: "Database Error: Failed to Update Destination.",
     };
   }
+
   revalidatePath("/admin/destinations");
   redirect("/admin/destinations");
 }

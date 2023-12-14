@@ -119,6 +119,7 @@ export default function CreateDestinationForm() {
             </div>
           </div>
 
+
           <div>
             <div className="font-bold text-[#696969] text-xl">
               <label htmlFor="date">Image</label>
@@ -131,6 +132,7 @@ export default function CreateDestinationForm() {
               accept="image/*" 
             />
           </div>
+
         </div>
 
         <div aria-live="polite" aria-atomic="true">
