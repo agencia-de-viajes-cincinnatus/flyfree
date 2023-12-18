@@ -15,3 +15,19 @@ export async function GetDestination() {
     return null;
   }
 }
+
+export async function GetReservation() {
+  try {
+    const res = await fetch(`${baseUrl}/reservation`);
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch reservations. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    console.error('Error fetching reservations:', error);
+    return null;
+  }
+}
