@@ -1,7 +1,7 @@
-import { Destination, Reservation } from "./definitions";
-import { unstable_noStore as noStore } from "next/cache";
+import { Destination, Reservation } from './definitions';
+import { unstable_noStore as noStore } from 'next/cache';
 
-const baseUrl = "http://localhost:3000/api";
+export const baseUrl = 'http://localhost:3000/api';
 
 export async function fetchDestinations(): Promise<Destination[]> {
   noStore();
@@ -10,7 +10,7 @@ export async function fetchDestinations(): Promise<Destination[]> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch destinations");
+    throw new Error('Failed to fetch destinations');
   }
 }
 
@@ -21,7 +21,7 @@ export async function fetchDestinationById(id: string): Promise<Destination> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch destination");
+    throw new Error('Failed to fetch destination');
   }
 }
 
@@ -45,7 +45,7 @@ export async function fetchReservation(): Promise<Reservation[]> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch reservation");
+    throw new Error('Failed to fetch reservation');
   }
 }
 
@@ -56,6 +56,6 @@ export async function fetchReservationById(id: string): Promise<Reservation> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch reservation");
+    throw new Error('Failed to fetch reservation');
   }
 }
