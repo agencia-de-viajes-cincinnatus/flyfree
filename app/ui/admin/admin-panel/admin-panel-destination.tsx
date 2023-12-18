@@ -40,7 +40,7 @@ export default function AdminPanelDestination() {
                 </span>
               </div>
               <p className='text-sm mt-2'>{destination.city}</p>
-              <p className='text-sm'>{destination.description}</p>
+              <p className='text-sm'>Description: {destination.description}</p>
               <p className='text-sm'>Score: {destination.score}</p>
             </div>
           ))}
