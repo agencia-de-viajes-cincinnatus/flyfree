@@ -1,9 +1,9 @@
 import React from 'react';
-import AdminPanel from '@/app/ui/admin/admin-panel/admin-panel';
+import AdminPanelDestination from '@/app/ui/admin/admin-panel/admin-panel-destination';
 export default function AdminPanelPage() {
   return (
     <div>
-      <AdminPanel />
+      <AdminPanelDestination />
     </div>
   );
 }

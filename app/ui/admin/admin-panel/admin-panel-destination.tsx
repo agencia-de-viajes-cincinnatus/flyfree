@@ -1,7 +1,6 @@
 'use client';
 import { GetDestination } from '@/app/lib/admin-panel';
 import { useEffect, useState } from 'react';
-import { Destination } from '@/app/lib/definitions';
 
 interface AdminPanelProps {
   id: string;
@@ -13,7 +12,7 @@ interface AdminPanelProps {
   image?: string;
 }
 
-export default function AdminPanel() {
+export default function AdminPanelDestination() {
   const [destination, setDestination] = useState<AdminPanelProps>();
 
   useEffect(() => {
