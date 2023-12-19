@@ -1,6 +1,6 @@
 import { Destination } from "@/app/lib/definitions";
 import { DeleteDestination, UpdateDestination } from "./buttons";
-// import { fetchDestinationImage } from "@/app/lib/data";
+import { fetchDestinationImage } from "@/app/lib/data";
 import Image from "next/image";
 
 export default async function DestinationCard({
@@ -10,7 +10,9 @@ export default async function DestinationCard({
 }) {
   const { id, city, country, description, price, score, image } = destination;
 
-  // const destinationImage = await fetchDestinationImage(image);
+  const destinationImage = await fetchDestinationImage(image as string);
+  console.log(destinationImage);
+  
 
   return (
     <div className="rounded-xl bg-[#EDEDED] mb-6 shadow-md flex">
@@ -22,7 +24,7 @@ export default async function DestinationCard({
           <p className="text-yellow-600">$ {price}</p>
           <p>Score: {score}</p>
         </div>
-        {/* <Image src={`${process.env.NEXT_PUBLIC_API_URL}/destination/image/${image}`} width={100} height={100} alt={city} /> */}
+        {/* <Image src={`${destinationImage.url}`} width={100} height={100} alt={city} /> */}
         <div className="flex gap-2 mt-3">
           <UpdateDestination id={id} />
           <DeleteDestination id={id} />
@@ -31,7 +33,7 @@ export default async function DestinationCard({
       <div className="w-2/4">
         <img
         className="rounded-r-xl object-cover h-full"
-          src={`${process.env.NEXT_PUBLIC_API_URL}/destination/image/${image}`}
+          src={`${destinationImage.url}`}
           alt={city}
         />
       </div>

@@ -25,18 +25,16 @@ export async function fetchDestinationById(id: string): Promise<Destination> {
   }
 }
 
-// export async function fetchDestinationImage(imageName: string) {
-//   noStore();
-//   try {
-//     const res = await fetch(`${baseUrl}/destination/image/${imageName}`);
-//     const imageBlob = await res.blob();
-//     const imageObjectUrl = URL.createObjectURL(imageBlob);
-
-//     return imageObjectUrl;
-//   } catch (error) {
-//     throw new Error("Failed to fetch destination image");
-//   }
-// }
+export async function fetchDestinationImage(imageName: string) {
+  noStore();
+  try {
+    const res = await fetch(`${baseUrl}/destination/image/${imageName}`);
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error("Failed to fetch destination image");
+  }
+}
 
 export async function fetchReservation(): Promise<Reservation[]> {
   noStore();
