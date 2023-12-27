@@ -21,7 +21,7 @@ export default function AdminPanelDestination() {
   }, []);
 
   return (
-    <div className='flex flex-col h-screen'>
+    <div className='flex flex-col h-screen mt-8'>
       <div className='h-[400px] max-w-[300px] p-4 border border-gray-300 rounded shadow-md ml-4 overflow-y-auto'>
         <div className='sticky top-0 bg-white p-4 border-b border-gray-300 z-10'>
           <h2 className='text-xl font-semibold mb-4'>Destinations List</h2>
