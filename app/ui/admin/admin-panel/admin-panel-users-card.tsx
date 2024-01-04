@@ -1,92 +1,7 @@
-export default function AdminPanelUsers() {
-  const users = [
-    {
-      id: 1,
-      name: 'Juan',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 2,
-      name: 'Pedro',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 3,
-      name: 'Maria',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 4,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 5,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 6,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 7,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 8,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 9,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 10,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 11,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 12,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 13,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 14,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 15,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 16,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-    {
-      id: 17,
-      name: 'Jose',
-      email: 'yo@gmail.com',
-    },
-  ];
+import React from 'react';
+import { users } from '@/app/lib/userAction';
 
+export default function AdminPanelUsers() {
   return (
     <div className='bg-gray-100 rounded-lg shadow-md p-8 m-3'>
       <div className='bg-white rounded-lg p-12 w-100'>
@@ -108,12 +23,22 @@ export default function AdminPanelUsers() {
               >
                 <h2 className='text-xl font-semibold'>{user.name}</h2>
                 <p className='text-sm'>{user.email}</p>
+                {user.role !== 'admin' && (
+                  <a
+                    href={`#/edit/${user.id}`}
+                    className='text-blue-500 text-sm px-2 py-1 rounded inline-block mt-2'
+                  >
+                    Editar usuario
+                  </a>
+                )}
 
                 {/* Barra de opciones */}
                 <div className='absolute top-2 right-2 flex space-x-2'>
                   <select className='px-4 py-2 border border-gray-300 rounded-md bg-blue-500 text-white'>
-                    <option value=''>admin</option>
-                    <option value=''>user</option>
+                    <option value=''>{user.role}</option>
+                    <option value=''>
+                      {user.role === 'user' ? 'admin' : 'user'}
+                    </option>
                   </select>
                   <button
                     className='text-white bg-red-500 px-2 py-1 rounded'
