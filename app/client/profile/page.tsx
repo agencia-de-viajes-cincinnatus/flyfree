@@ -1,6 +1,7 @@
 import UserProfiler from '@/app/ui/client/profile/UserProfiler';
 import HistoriTravelCardProfile from '@/app/ui/client/profile/travelHIstoriCardProfile';
 import PreferensTravelCardProfile from '@/app/ui/client/profile/PreferensTravelCardProfile';
+import MapProfile from '@/app/ui/client/profile/MapsProfile';
 export default function ProfilePage() {
   return (
     <>
@@ -24,6 +25,7 @@ export default function ProfilePage() {
             <PreferensTravelCardProfile />
           </div>
         </div>
+        <MapProfile />
       </div>
     </>
   );
