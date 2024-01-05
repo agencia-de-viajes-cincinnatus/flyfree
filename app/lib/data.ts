@@ -1,7 +1,66 @@
-import { Destination, Reservation } from "./definitions";
-import { unstable_noStore as noStore } from "next/cache";
+import { Destination, Reservation } from './definitions';
+import { unstable_noStore as noStore } from 'next/cache';
 
-const baseUrl = "http://localhost:3000/api";
+const baseUrl = 'http://localhost:3000/api';
+
+export const travels = [
+  {
+    id: '1',
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: 'https://placekitten.com/200/200',
+    city: 'Bogotá',
+    country: 'Colombia',
+    date: '2021-10-10',
+    time: '10:00',
+    duration: '1:00',
+    price: '100000',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
+  {
+    id: '2',
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: 'https://placekitten.com/200/200',
+    city: 'Bogotá',
+    country: 'Colombia',
+    date: '2021-10-10',
+    time: '10:00',
+    duration: '1:00',
+    price: '100000',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
+  {
+    id: '3',
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: 'https://placekitten.com/200/200',
+    city: 'Bogotá',
+    country: 'Colombia',
+    date: '2021-10-10',
+    time: '10:00',
+    duration: '1:00',
+    price: '100000',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
+  {
+    id: '4',
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: 'https://placekitten.com/200/200',
+    city: 'Bogotá',
+    country: 'Colombia',
+    date: '2021-10-10',
+    time: '10:00',
+    duration: '1:00',
+    price: '100000',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
+];
 
 export async function fetchDestinations(): Promise<Destination[]> {
   noStore();
@@ -10,7 +69,7 @@ export async function fetchDestinations(): Promise<Destination[]> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch destinations");
+    throw new Error('Failed to fetch destinations');
   }
 }
 
@@ -21,7 +80,7 @@ export async function fetchDestinationById(id: string): Promise<Destination> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch destination");
+    throw new Error('Failed to fetch destination');
   }
 }
 
@@ -45,7 +104,7 @@ export async function fetchReservation(): Promise<Reservation[]> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch reservation");
+    throw new Error('Failed to fetch reservation');
   }
 }
 
@@ -56,6 +115,6 @@ export async function fetchReservationById(id: string): Promise<Reservation> {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch reservation");
+    throw new Error('Failed to fetch reservation');
   }
 }
