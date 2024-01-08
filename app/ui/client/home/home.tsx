@@ -2,6 +2,7 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import { useState } from 'react';
+import FormHome from './form/form-home';
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -96,6 +97,13 @@ export default function HomePage() {
           </p>
         </div>
       </div>
+      <div className='w-full mt-20'>
+        <img
+          src='https://s3-alpha-sig.figma.com/img/9d40/d509/e9ba382d9fc097186bb63dc3ca94dc27?Expires=1705881600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LEW6mR1Vh~ecIF~BBMqsqJTGh8wrpWFOdOV620RY9sTv9JCHr3d8oA-y7avHSQVXi~CEBTITdwGW~PjE5FvXsABG63kH-EUGUU8AzFlnbW0Bz~7jm2TU8ap2VqIcvQEbsQ-Uk7Yl7CfEmsdDXmqD1Yv1U-us6d91jFdIHLlAk8XsaqMLb~r12dDk4YN~ColPUUIZ4tNNs3OcV9yqHlyu2XRD1gRlyszTPz2zyTyXEBBFjsZHyrKoC8fCZMrTwh4DVXZctz0d-xcf8a2wlhQOoimTTiKhocDpOJaYpGKmlFIDa4fmFicPoj2iUjGxEJjo5lPygUDYhhR5AqazcrtsKw__'
+          alt=''
+        />
+      </div>
+      <FormHome />
     </>
   );
 }
