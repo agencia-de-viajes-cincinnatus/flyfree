@@ -3,6 +3,7 @@ import React from 'react';
 import NavBar from '../NavBar';
 import { useState } from 'react';
 import FormHome from './form/form-home';
+import Footer from './footer/footer';
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,6 +105,7 @@ export default function HomePage() {
         />
       </div>
       <FormHome />
+      <Footer />
     </>
   );
 }
