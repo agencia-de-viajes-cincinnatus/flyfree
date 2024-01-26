@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       <NavBar />
-      <div className='container mx-auto p-8 bg-primary text-white'>
+      <div className='container mx-auto p-8 bg-primary text-white max-w-full'>
         <div className='flex items-center'>
           <div className='w-1/2 pr-4'>
             <h1 className='text-4xl font-bold m-10 text-yellow-500'>
