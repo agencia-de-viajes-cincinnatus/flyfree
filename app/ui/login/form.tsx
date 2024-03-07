@@ -1,6 +1,6 @@
 import React from 'react';
-import { Input } from './input';
-import { Button } from './button';
+import { Input } from '@/app/ui/input';
+import { Button } from '@/app/ui/button';
 import Image from 'next/image';
 
 export default function LoginForm() {
