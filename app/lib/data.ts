@@ -91,7 +91,7 @@ export async function fetchDestinationImage(imageName: string) {
     const json = await res.json();
     return json;
   } catch (error) {
-    throw new Error("Failed to fetch destination image");
+    throw new Error('Failed to fetch destination image');
   }
 }
 
@@ -114,5 +114,17 @@ export async function fetchReservationById(id: string): Promise<Reservation> {
     return json;
   } catch (error) {
     throw new Error('Failed to fetch reservation');
+  }
+}
+
+export async function fetchProfileData() {
+  noStore();
+  const base = 'http://localhost:3000/api/v1/auth/profile';
+  try {
+    const res = await fetch(`${base}`);
+    const json = await res.json();
+    return json;
+  } catch (error) {
+    throw new Error('Failed to fetch profile data');
   }
 }

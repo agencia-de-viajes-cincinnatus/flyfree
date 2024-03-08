@@ -1,7 +1,10 @@
+'use client';
 import React from 'react';
 import { Input } from '@/app/ui/input';
 import { Button } from '@/app/ui/button';
 import Image from 'next/image';
+import { loginUser } from '@/app/lib/action';
+import { useFormState, useFormStatus } from 'react-dom';
 
 export default function LoginForm() {
   return (
@@ -17,14 +20,15 @@ export default function LoginForm() {
           />
         </div>
       </div>
-      <form className='flex-col flex'>
+      <form action={loginUser} className='flex-col flex'>
         <div>
           <label htmlFor='' className='block text-sm font-medium text-gray-700'>
             Correo Electronico
           </label>
           <Input
             type='text'
-            name='username'
+            name='email'
+            id='email'
             className='mt-1 w-full rounded-md border border-gray-300 p-3 focus:border-blue-300 focus:outline-none focus:ring'
           />
         </div>
@@ -35,6 +39,7 @@ export default function LoginForm() {
           <Input
             type='password'
             name='password'
+            id='password'
             className='mt-1 w-full rounded-md  border border-gray-300 p-3 focus:border-blue-300 focus:outline-none focus:ring'
           />
         </div>
