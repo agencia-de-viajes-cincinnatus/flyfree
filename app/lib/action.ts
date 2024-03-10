@@ -1,12 +1,9 @@
 'use server';
-
 import { Register } from './definitions';
 import { set, z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import Swal from 'sweetalert2';
-import { User } from 'next-auth';
-
+import errorMap from 'zod/locales/en.js';
 const registerSchema = z.object({
   id: z.string(),
   username: z.string(),
@@ -58,12 +55,16 @@ const omitloginSchema = loginSchema.omit({
   date: true,
 });
 
-export async function loginUser(formData: FormData) {
+export async function loginUser(
+  prevState: string | undefined,
+  formData: FormData
+) {
   const { email, password } = omitloginSchema.parse(
     Object.fromEntries(formData.entries())
   );
 
   const login = 'http://localhost:3000/api/v1/auth/login';
+
   try {
     const res = await fetch(login, {
       method: 'POST',
@@ -72,22 +73,12 @@ export async function loginUser(formData: FormData) {
         'Content-Type': 'application/json',
       },
     });
-
-    if (res.status === 401) {
-      return 'InvalidCredentials';
-    }
-
-    if (res.status === 404) {
-      return 'UserNotFound';
-    }
-
-    if (res.status === 200) {
-      const user = await res.json();
-      set(user);
+    if (res.status === 400 || res.status === 401) {
+      return 'PasswordsMismatch';
     }
   } catch (error) {
     console.error('An unexpected error happened:', error);
   }
-
+  revalidatePath('/client/profile');
   redirect('/client/profile');
 }

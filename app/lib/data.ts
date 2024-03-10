@@ -1,6 +1,6 @@
 import { Destination, Reservation } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
-
+import useToken from '@/app/hooks/useAuthToken';
 export const baseUrl = 'http://localhost:3000/api';
 
 export const travels = [
@@ -118,13 +118,27 @@ export async function fetchReservationById(id: string): Promise<Reservation> {
 }
 
 export async function fetchProfileData() {
-  noStore();
-  const base = 'http://localhost:3000/api/v1/auth/profile';
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { user } = useToken();
+  const profileDataUrl = 'http://localhost:3000/api/v1/auth/profile';
+
   try {
-    const res = await fetch(`${base}`);
-    const json = await res.json();
-    return json;
+    const res = await fetch(profileDataUrl, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${user}`,
+      },
+    });
+    console.log(res.status);
+    if (res.status === 201) {
+      const user = await res.json();
+      return user;
+    }
+
+    if (!res.ok) {
+      throw new Error('No autorizado');
+    }
   } catch (error) {
-    throw new Error('Failed to fetch profile data');
+    console.error('Error al obtener el perfil:', error);
   }
 }
