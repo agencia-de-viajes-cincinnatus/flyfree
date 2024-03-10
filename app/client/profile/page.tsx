@@ -1,4 +1,5 @@
-import UserProfiler from '@/app/ui/client/profile/UserProfiler';
+'use client';
+import Profile from '@/app/ui/client/profile/UserProfiler';
 import HistoriTravelCardProfile from '@/app/ui/client/profile/travelHIstoriCardProfile';
 import PreferensTravelCardProfile from '@/app/ui/client/profile/PreferensTravelCardProfile';
 import MapProfile from '@/app/ui/client/profile/MapsProfile';
@@ -7,7 +8,7 @@ export default function ProfilePage() {
     <>
       <div className='flex'>
         <div className='m-4'>
-          <UserProfiler />
+          <Profile />
         </div>
         <div>
           <div
