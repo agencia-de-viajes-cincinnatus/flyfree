@@ -48,6 +48,17 @@ export default function RegisterForm() {
         </div>
         <div>
           <label htmlFor='' className='block text-sm font-medium text-gray-700'>
+            Rol
+          </label>
+          <Input
+            type='text'
+            name='rol'
+            id='rol'
+            className='mt-1 w-full rounded-md border border-gray-300 p-3 focus:border-blue-300 focus:outline-none focus:ring'
+          />
+        </div>
+        <div>
+          <label htmlFor='' className='block text-sm font-medium text-gray-700'>
             Contraseña
           </label>
           <Input

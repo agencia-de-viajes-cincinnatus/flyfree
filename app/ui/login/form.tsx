@@ -1,14 +1,16 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '@/app/ui/input';
 import { Button } from '@/app/ui/button';
 import Image from 'next/image';
 import { loginUser } from '@/app/lib/action';
 import { useFormState, useFormStatus } from 'react-dom';
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
+import ButtonLoginWithGoogle from './button-login-widt-google';
 
 export default function LoginForm() {
   const [state, dispatch] = useFormState(loginUser, undefined);
+
   return (
     <div className='mx-auto max-w-md rounded-md bg-gradient-to-tr  from-gray-50 to-gray-95 p-6 shadow-md ml-0'>
       <div className='flex justify-center items-center h-[45vh] '>
@@ -55,6 +57,9 @@ export default function LoginForm() {
           </Button>
         </div>
       </form>
+      <div>
+        <ButtonLoginWithGoogle />
+      </div>
       {state === 'PasswordsMismatch' && (
         <div className='flex items-center mt-4'>
           <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
