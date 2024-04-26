@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Destination, Reservation } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
-import useToken from '@/app/hooks/useAuthToken';
+import useToken from '../ui/hooks/useAuthToken';
 export const baseUrl = 'http://localhost:3000/api';
+import { RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies';
 
 export const travels = [
   {
@@ -118,27 +120,20 @@ export async function fetchReservationById(id: string): Promise<Reservation> {
 }
 
 export async function fetchProfileData() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { user } = useToken();
-  const profileDataUrl = 'http://localhost:3000/api/v1/auth/profile';
+  noStore();
 
+  const token = RequestCookies.name;
+  console.log(token);
   try {
-    const res = await fetch(profileDataUrl, {
+    const res = await fetch(`http://localhost:3000/api/v1/auth/profile`, {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${user}`,
-      },
     });
     console.log(res.status);
-    if (res.status === 201) {
-      const user = await res.json();
-      return user;
-    }
-
-    if (!res.ok) {
-      throw new Error('No autorizado');
+    if (res.status === 201 || res.status === 200) {
+      const json = await res.json();
+      return json;
     }
   } catch (error) {
-    console.error('Error al obtener el perfil:', error);
+    console.error('An unexpected error happened:', error);
   }
 }
